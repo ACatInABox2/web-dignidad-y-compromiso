@@ -1,0 +1,1 @@
+aquí en ./src/assets/fonts se pondran las caligrafias o fonts personalizadas que considere relevantes para el partido

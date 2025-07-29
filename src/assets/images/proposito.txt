@@ -1,0 +1,1 @@
+aquí en ./src/assets/images/ pondremos las imagenes relevantes al web, por ejemplo el favicon.ico o .png
