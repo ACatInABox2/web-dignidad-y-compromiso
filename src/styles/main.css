@@ -1,0 +1,33 @@
+/* Estilos para el header */
+.main-header {
+  background-color: #1e3a8a;
+  color: white;
+  min-height: 40vh;            
+  display: flex;               
+  justify-content: center;     
+  align-items: center;         
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.logo {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.textos-header h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.textos-header p {
+  margin: 5px 0 0;
+  font-size: 1.6rem;
+}
+
