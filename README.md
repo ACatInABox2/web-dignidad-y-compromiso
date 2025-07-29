@@ -23,7 +23,16 @@ El proposito de esta web es la de expandir la información que el partido politi
 <div>
 <h3>Interna</h3>
 <p>
+La estructura interna del proyecto empieza desde una carpeta raiz de la misma jerarquia que el README.md llamada src, dentro de esta carpeta tenes 4 carpetas (assets, components, scripts, styles), un .gitignore de la misma jerarquia, dentro de las carpetas segun su denominación se encuentran los archivos clave, por ejemplo en script/ esta main.js, cabe a recalcar que es suseptible a cambios.
+</p>
+</div>
 
+[Sub-Sub-Sección]: # (Este div corresponde a la subsubsección de Estructura-Externa)
+
+<div>
+<h3>Externa</h3>
+<p>
+La estructura externa del proyecto es todo lo visual, es decir, el html, la organización visual de la pagin va a ser según los criterios, boceto y feedback que me comuniquen quienes dirijen el proyecto, pendiente actualizar.
 </p>
 </div>
 </div>
