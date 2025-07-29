@@ -46,7 +46,7 @@ La estructura externa del proyecto es todo lo visual, es decir, el html, la orga
 
 [Sub-Sección]: # (Este div corresponde a la subsección de Candidatos)
 <div>
-<h2>Candidatos</h2>
+<h2>Curules</h2>
 <p>
 
 </p>
