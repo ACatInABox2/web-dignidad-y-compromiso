@@ -33,9 +33,10 @@ function includeComponent(id, file) {
             if (id === "Candidatos") {
                 initializeCandidatesButton();
             }
-            if (id === "Contacto") {
-                initializeContactForm();
+            if (id === "Eventos") {
+                initializeEventsButton();
             }
+
         })
         .catch(err => console.error(`Error loading ${file}:`, err));
 }
@@ -70,40 +71,108 @@ function initializeCandidatesButton() {
     });
 }
 
-function initializeContactForm() {
-    const contactForm = document.getElementById('contact-form');
+function initializeEventsButton() {
+    const showMoreBtn = document.getElementById('show-more-events');
+    const hiddenEvents = document.querySelectorAll('.hidden-event');
+    const btnText = showMoreBtn ? showMoreBtn.querySelector('.btn-text') : null;
     
-    if (!contactForm) return;
+    if (!showMoreBtn) return;
     
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Obtener datos del formulario
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Validación básica
-        if (!data.name || !data.email || !data.subject || !data.message) {
-            alert('Por favor completa todos los campos obligatorios.');
-            return;
+    let isExpanded = false;
+    
+    showMoreBtn.addEventListener('click', () => {
+        if (!isExpanded) {
+            // Mostrar eventos ocultos
+            hiddenEvents.forEach(event => {
+                event.style.display = 'block';
+            });
+            btnText.textContent = 'Ver menos eventos';
+            showMoreBtn.classList.add('expanded');
+            isExpanded = true;
+        } else {
+            // Ocultar eventos
+            hiddenEvents.forEach(event => {
+                event.style.display = 'none';
+            });
+            btnText.textContent = 'Ver más eventos';
+            showMoreBtn.classList.remove('expanded');
+            isExpanded = false;
         }
-        
-        // Simular envío (aquí se conectaría con un backend real)
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
-        
-        submitBtn.innerHTML = '<span>Enviando...</span>';
-        submitBtn.disabled = true;
-        
-        // Simular delay de envío
-        setTimeout(() => {
-            alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
-            contactForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 2000);
     });
 }
+
+// Función global para expandir detalles de candidatos
+function toggleCandidateDetails(button) {
+    const candidateCard = button.closest('.candidate-card');
+    const expandedSection = candidateCard.querySelector('.candidate-details-expanded');
+    
+    // Agregar botón de cerrar si no existe
+    if (!expandedSection.querySelector('.close-modal')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'close-modal';
+        closeBtn.innerHTML = '×';
+        closeBtn.onclick = () => closeCandidateModal(closeBtn);
+        expandedSection.querySelector('.expanded-content').appendChild(closeBtn);
+    }
+    
+    expandedSection.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevenir scroll
+}
+
+// Función para cerrar el modal
+function closeCandidateModal(closeBtn) {
+    const expandedSection = closeBtn.closest('.candidate-details-expanded');
+    expandedSection.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restaurar scroll
+}
+
+// Función para expandir detalles de eventos
+function toggleEventDetails(button) {
+    const eventCard = button.closest('.event-card');
+    const eventTitle = eventCard.querySelector('.event-title').textContent;
+    const eventDescription = eventCard.querySelector('.event-description').textContent;
+    const eventLocation = eventCard.querySelector('.event-location').textContent;
+    const eventTime = eventCard.querySelector('.event-time').textContent;
+    const eventImage = eventCard.querySelector('.event-img').src;
+    
+    // Crear modal para eventos
+    const modal = document.createElement('div');
+    modal.className = 'event-modal';
+    modal.innerHTML = `
+        <div class="event-modal-content">
+            <button class="close-modal" onclick="closeEventModal(this)">×</button>
+            <div class="event-modal-grid">
+                <div class="event-modal-image">
+                    <img src="${eventImage}" alt="${eventTitle}" class="event-modal-img">
+                </div>
+                <div class="event-modal-info">
+                    <h2>${eventTitle}</h2>
+                    <p class="event-modal-description">${eventDescription}</p>
+                    <div class="event-modal-meta">
+                        <p><strong>📍 Ubicación:</strong> ${eventLocation.replace('📍 ', '')}</p>
+                        <p><strong>🕒 Horario:</strong> ${eventTime.replace('🕒 ', '')}</p>
+                    </div>
+                    <div class="event-modal-actions">
+                        <button class="event-register-btn">Registrarse</button>
+                        <button class="event-share-btn">Compartir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+}
+
+// Función para cerrar el modal de eventos
+function closeEventModal(closeBtn) {
+    const modal = closeBtn.closest('.event-modal');
+    modal.remove();
+    document.body.style.overflow = 'auto';
+}
+
+
 
 function initializeNavigation() {
     const navbar = document.getElementById('navbar');

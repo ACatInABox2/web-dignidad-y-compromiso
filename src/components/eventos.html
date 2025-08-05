@@ -5,10 +5,10 @@
     <p class="section-subtitle">Mantente al día con nuestras actividades, eventos y noticias del partido</p>
     
          <div class="events-grid">
-       <!-- Evento 1 -->
+       <!-- Evento 1 - Caminata Ecológica -->
        <article class="event-card">
          <div class="event-image">
-           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <img src="./assets/images/caminata-ecologica.jpg" alt="Caminata Ecológica" class="event-img">
            <div class="event-date">
              <span class="day">15</span>
              <span class="month">Dic</span>
@@ -16,13 +16,13 @@
          </div>
          <div class="event-content">
            <div class="event-category">Evento</div>
-           <h3 class="event-title">[Título del Evento]</h3>
-           <p class="event-description">[Descripción breve del evento y lo que se realizará]</p>
+           <h3 class="event-title">Caminata Ecológica por Santa Bárbara</h3>
+           <p class="event-description">Únete a nuestra caminata ecológica para promover la conservación del medio ambiente y conectar con la naturaleza de nuestro hermoso municipio. Actividad familiar con charlas sobre sostenibilidad.</p>
            <div class="event-meta">
-             <span class="event-location">📍 [Ubicación]</span>
-             <span class="event-time">🕒 [Hora]</span>
+             <span class="event-location">📍 Parque Principal de Santa Bárbara</span>
+             <span class="event-time">🕒 8:00 AM - 12:00 PM</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -36,9 +36,9 @@
            </div>
          </div>
          <div class="event-content">
-           <div class="event-category">Actividad</div>
-           <h3 class="event-title">[Título de la Actividad]</h3>
-           <p class="event-description">[Descripción breve de la actividad y sus objetivos]</p>
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y sus objetivos]</p>
            <div class="event-meta">
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
@@ -57,9 +57,9 @@
            </div>
          </div>
          <div class="event-content">
-           <div class="event-category">Reunión</div>
-           <h3 class="event-title">[Título de la Reunión]</h3>
-           <p class="event-description">[Descripción breve de la reunión y temas a tratar]</p>
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y temas a tratar]</p>
            <div class="event-meta">
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
@@ -78,9 +78,9 @@
            </div>
          </div>
          <div class="event-content">
-           <div class="event-category">Taller</div>
-           <h3 class="event-title">[Título del Taller]</h3>
-           <p class="event-description">[Descripción breve del taller y lo que aprenderán los participantes]</p>
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y lo que aprenderán los participantes]</p>
            <div class="event-meta">
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
@@ -99,9 +99,9 @@
            </div>
          </div>
          <div class="event-content">
-           <div class="event-category">Foro</div>
-           <h3 class="event-title">[Título del Foro]</h3>
-           <p class="event-description">[Descripción breve del foro y los temas que se discutirán]</p>
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y los temas que se discutirán]</p>
            <div class="event-meta">
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
@@ -120,9 +120,136 @@
            </div>
          </div>
          <div class="event-content">
-           <div class="event-category">Campaña</div>
-           <h3 class="event-title">[Título de la Campaña]</h3>
-           <p class="event-description">[Descripción breve de la campaña y sus objetivos]</p>
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y sus objetivos]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Eventos adicionales (ocultos inicialmente) -->
+       <!-- Evento 7 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">15</span>
+             <span class="month">Ene</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y lo que se realizará]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Evento 8 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">20</span>
+             <span class="month">Ene</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y sus objetivos]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Evento 9 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">25</span>
+             <span class="month">Ene</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y temas a tratar]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Evento 10 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">30</span>
+             <span class="month">Ene</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y lo que aprenderán los participantes]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Evento 11 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">05</span>
+             <span class="month">Feb</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y los temas que se discutirán]</p>
+           <div class="event-meta">
+             <span class="event-location">📍 [Ubicación]</span>
+             <span class="event-time">🕒 [Hora]</span>
+           </div>
+           <button class="event-btn">Más información</button>
+         </div>
+       </article>
+
+       <!-- Evento 12 -->
+       <article class="event-card hidden-event">
+         <div class="event-image">
+           <img src="./assets/images/placeholder-event.svg" alt="Imagen del evento" class="event-img">
+           <div class="event-date">
+             <span class="day">10</span>
+             <span class="month">Feb</span>
+           </div>
+         </div>
+         <div class="event-content">
+           <div class="event-category">Evento</div>
+           <h3 class="event-title">[Título del Evento]</h3>
+           <p class="event-description">[Descripción breve del evento y sus objetivos]</p>
            <div class="event-meta">
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
@@ -134,8 +261,8 @@
 
     <!-- Botón Ver Más Eventos -->
     <div class="events-button-container">
-      <button class="show-more-events-btn">
-        <span>Ver todos los eventos</span>
+      <button class="show-more-events-btn" id="show-more-events">
+        <span class="btn-text">Ver más eventos</span>
         <span class="btn-icon">→</span>
       </button>
     </div>
