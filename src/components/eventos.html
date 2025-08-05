@@ -43,7 +43,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -64,7 +64,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -85,7 +85,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -106,7 +106,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -127,7 +127,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -149,7 +149,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -170,7 +170,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -191,7 +191,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -212,7 +212,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -233,7 +233,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
 
@@ -254,7 +254,7 @@
              <span class="event-location">📍 [Ubicación]</span>
              <span class="event-time">🕒 [Hora]</span>
            </div>
-           <button class="event-btn">Más información</button>
+           <button class="event-btn" onclick="toggleEventDetails(this)">Más información</button>
          </div>
        </article>
      </div>
@@ -267,4 +267,27 @@
       </button>
     </div>
   </div>
-</div> 
+</div>
+
+<!-- Modal de Evento (Ejemplo) -->
+<div class="event-modal" id="eventModal1">
+  <div class="event-modal-content">
+    <span class="close-modal" onclick="closeEventModal(this)">&times;</span>
+    <div class="event-modal-grid">
+      <div class="event-modal-image">
+        <img src="./assets/images/caminata-ecologica.jpg" alt="Caminata Ecológica" class="event-modal-img">
+      </div>
+      <div class="event-modal-info">
+        <h2>Caminata Ecológica por Santa Bárbara</h2>
+        <p class="event-modal-description">Únete a nuestra caminata ecológica para promover la conservación del medio ambiente y conectar con la naturaleza de nuestro hermoso municipio. Actividad familiar con charlas sobre sostenibilidad.</p>
+        <div class="event-modal-meta">
+          <p><strong>📍 Ubicación:</strong> Parque Principal de Santa Bárbara</p>
+          <p><strong>🕒 Horario:</strong> 8:00 AM - 12:00 PM</p>
+        </div>
+        <div class="event-modal-actions">
+          <button class="event-share-btn">Compartir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

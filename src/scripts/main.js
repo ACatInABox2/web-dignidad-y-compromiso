@@ -19,6 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         initializeNavigation();
     }, 100);
+
+    // Si quieres mostrar el próximo evento automáticamente al cargar la página,
+    // descomenta las siguientes líneas:
+    /*
+    setTimeout(() => {
+        const firstEventBtn = document.querySelector('.event-card .event-btn');
+        if (firstEventBtn) {
+            toggleEventDetails(firstEventBtn);
+        }
+    }, 1000);
+    */
 });
 
 function includeComponent(id, file) {
@@ -35,6 +46,7 @@ function includeComponent(id, file) {
             }
             if (id === "Eventos") {
                 initializeEventsButton();
+                initializeEventButtons(); // <-- Nuevo: inicializa los botones de eventos
             }
 
         })
@@ -98,6 +110,19 @@ function initializeEventsButton() {
             showMoreBtn.classList.remove('expanded');
             isExpanded = false;
         }
+        initializeEventButtons(); // <-- Nuevo: re-inicializa los botones después de mostrar/ocultar
+    });
+}
+
+// Nuevo: Inicializa los botones "Más información" de todos los eventos
+function initializeEventButtons() {
+    const eventCards = document.querySelectorAll('.event-card');
+    eventCards.forEach(card => {
+        const btn = card.querySelector('.event-btn');
+        if (btn && !btn.hasAttribute('data-initialized')) {
+            btn.onclick = function() { toggleEventDetails(this); };
+            btn.setAttribute('data-initialized', 'true');
+        }
     });
 }
 
@@ -105,25 +130,27 @@ function initializeEventsButton() {
 function toggleCandidateDetails(button) {
     const candidateCard = button.closest('.candidate-card');
     const expandedSection = candidateCard.querySelector('.candidate-details-expanded');
-    
-    // Agregar botón de cerrar si no existe
-    if (!expandedSection.querySelector('.close-modal')) {
-        const closeBtn = document.createElement('button');
-        closeBtn.className = 'close-modal';
-        closeBtn.innerHTML = '×';
-        closeBtn.onclick = () => closeCandidateModal(closeBtn);
-        expandedSection.querySelector('.expanded-content').appendChild(closeBtn);
-    }
-    
-    expandedSection.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevenir scroll
+    const expandedContent = expandedSection.querySelector('.expanded-content');
+
+    // Crear modal flotante con clase única para candidatos
+    const modal = document.createElement('div');
+    modal.className = 'candidate-modal';
+    modal.style.display = 'flex';
+    modal.innerHTML = `
+        <div class="expanded-content">
+            ${expandedContent.innerHTML}
+            <button class="close-modal" onclick="closeCandidateModal(this)">×</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
 }
 
-// Función para cerrar el modal
+// Función para cerrar el modal de candidatos
 function closeCandidateModal(closeBtn) {
-    const expandedSection = closeBtn.closest('.candidate-details-expanded');
-    expandedSection.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Restaurar scroll
+    const modal = closeBtn.closest('.candidate-modal');
+    modal.remove();
+    document.body.style.overflow = 'auto';
 }
 
 // Función para expandir detalles de eventos
@@ -134,8 +161,8 @@ function toggleEventDetails(button) {
     const eventLocation = eventCard.querySelector('.event-location').textContent;
     const eventTime = eventCard.querySelector('.event-time').textContent;
     const eventImage = eventCard.querySelector('.event-img').src;
-    
-    // Crear modal para eventos
+
+    // Crear modal para eventos (sin botón "Registrarse")
     const modal = document.createElement('div');
     modal.className = 'event-modal';
     modal.innerHTML = `
@@ -153,14 +180,13 @@ function toggleEventDetails(button) {
                         <p><strong>🕒 Horario:</strong> ${eventTime.replace('🕒 ', '')}</p>
                     </div>
                     <div class="event-modal-actions">
-                        <button class="event-register-btn">Registrarse</button>
                         <button class="event-share-btn">Compartir</button>
                     </div>
                 </div>
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
 }
