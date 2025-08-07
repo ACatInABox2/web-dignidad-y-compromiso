@@ -132,14 +132,22 @@ function toggleCandidateDetails(button) {
     const expandedSection = candidateCard.querySelector('.candidate-details-expanded');
     const expandedContent = expandedSection.querySelector('.expanded-content');
 
-    // Crear modal flotante con clase única para candidatos
+    // Modal fullscreen y fondo blanco en móvil
     const modal = document.createElement('div');
     modal.className = 'candidate-modal';
-    modal.style.display = 'flex';
+    modal.style.background = 'white';
+    modal.style.position = 'fixed';
+    modal.style.top = '0';
+    modal.style.left = '0';
+    modal.style.width = '100vw';
+    modal.style.height = '100vh';
+    modal.style.zIndex = '99999';
+    modal.style.overflow = 'hidden';
+
     modal.innerHTML = `
         <div class="expanded-content">
-            ${expandedContent.innerHTML}
             <button class="close-modal" onclick="closeCandidateModal(this)">×</button>
+            ${expandedContent.innerHTML}
         </div>
     `;
     document.body.appendChild(modal);
@@ -156,13 +164,14 @@ function closeCandidateModal(closeBtn) {
 // Función para expandir detalles de eventos
 function toggleEventDetails(button) {
     const eventCard = button.closest('.event-card');
-    const eventTitle = eventCard.querySelector('.event-title').textContent;
-    const eventDescription = eventCard.querySelector('.event-description').textContent;
-    const eventLocation = eventCard.querySelector('.event-location').textContent;
-    const eventTime = eventCard.querySelector('.event-time').textContent;
-    const eventImage = eventCard.querySelector('.event-img').src;
+    // Extraer información directamente del HTML
+    const eventTitle = eventCard.querySelector('.event-title')?.textContent || '';
+    const eventDescription = eventCard.querySelector('.event-description')?.innerHTML || '';
+    const eventLocation = eventCard.querySelector('.event-location')?.innerHTML || '';
+    const eventTime = eventCard.querySelector('.event-time')?.innerHTML || '';
+    const eventImage = eventCard.querySelector('.event-img')?.src || '';
 
-    // Crear modal para eventos (sin botón "Registrarse")
+    // Crear modal para eventos
     const modal = document.createElement('div');
     modal.className = 'event-modal';
     modal.innerHTML = `
@@ -176,8 +185,8 @@ function toggleEventDetails(button) {
                     <h2>${eventTitle}</h2>
                     <p class="event-modal-description">${eventDescription}</p>
                     <div class="event-modal-meta">
-                        <p><strong>📍 Ubicación:</strong> ${eventLocation.replace('📍 ', '')}</p>
-                        <p><strong>🕒 Horario:</strong> ${eventTime.replace('🕒 ', '')}</p>
+                        ${eventLocation ? `<p>${eventLocation}</p>` : ''}
+                        ${eventTime ? `<p>${eventTime}</p>` : ''}
                     </div>
                     <div class="event-modal-actions">
                         <button class="event-share-btn">Compartir</button>
